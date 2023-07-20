@@ -30,9 +30,7 @@ export class NinjasController {
 
   @Post()
   createNinja(@Body() createNinjaDto: CreateNinjaDto) {
-    return {
-      data: createNinjaDto,
-    };
+    return this.ninjaService.postSingleNinja(createNinjaDto);
   }
 
   // With pipe validations

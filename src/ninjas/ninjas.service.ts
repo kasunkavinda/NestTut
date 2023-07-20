@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CreateNinjaDto } from './dto/create-ninja.dto';
 
 @Injectable()
 export class NinjasService {
@@ -22,5 +23,9 @@ export class NinjasService {
       return filteredNinjas;
     }
     return this.ninjas;
+  }
+
+  postSingleNinja(createNinjaDto: CreateNinjaDto) {
+    return createNinjaDto;
   }
 }
