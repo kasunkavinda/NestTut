@@ -7,6 +7,7 @@ import {
   Param,
   Query,
   Body,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { CreateNinjaDto } from './dto/create-ninja.dto';
 import { UpdateNinjaDto } from './dto/update-ninja.dto';
@@ -25,12 +26,29 @@ export class NinjasController {
     return this.ninjaService.getSingleNinja(id);
   }
 
+  // Without pipe validations
+
   @Post()
   createNinja(@Body() createNinjaDto: CreateNinjaDto) {
     return {
       data: createNinjaDto,
     };
   }
+
+  // With pipe validations
+  // @Post()
+  // createNinja(
+  //   @Body('id', ParseIntPipe) id: number,
+  //   @Body('name') name: string,
+  // ) {
+  //   return {
+  //     data: {
+  //       id,
+  //       name,
+  //       typeofId: typeof id,
+  //     },
+  //   };
+  // }
 
   @Put(':id')
   updateNinja(@Param('id') id: string, @Body() updateNinjaDto: UpdateNinjaDto) {
